@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx  
+http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<context:component-scan base-package="br.ufc.petsi.dao" />
+	<context:component-scan base-package="br.ufc.petsi.controller" />
+	
+	<mvc:annotation-driven />
+	
+	<context:annotation-config />
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	
+	<bean id="postgresqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost/teste" />
+		<property name="username" value="postgres" />
+		<property name="password" value="postgres" />
+	</bean> 
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- gerenciamento de jpa pelo spring -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="postgresqlDataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+	</bean>
+	
+	<!-- gerenciamento da transação pelo spring -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<!-- 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10000000000000" />
+    </bean>
+	-->
+	<!-- 
+	<mvc:interceptors>
+		<bean class="br.ufc.web.interceptors.AutorizadorInterceptor" />
+	</mvc:interceptors>
+	-->
+	<tx:annotation-driven />
+
+</beans>
