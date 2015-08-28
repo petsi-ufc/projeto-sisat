@@ -7,10 +7,10 @@ import javax.inject.Inject;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.query.LdapQuery;
 
-import br.ufc.petsi.dao.DAOUser;
+import br.ufc.petsi.dao.UserDAO;
 import br.ufc.petsi.model.User;
 
-public class LdapUser implements DAOUser {
+public class LdapUser implements UserDAO {
 
 	@Inject
 	private LdapTemplate ldapTemplate;
