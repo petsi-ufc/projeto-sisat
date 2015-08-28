@@ -15,16 +15,13 @@ public class Service {
 	@GeneratedValue
 	private Long id;
 	
-	@NotNull
 	@NotEmpty
+	@NotNull(message="Informe o nome do serviço!")
 	private String name;
 
-	public Service() {
-
-	}
+	public Service() {}
 	
 	public Service(Long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}

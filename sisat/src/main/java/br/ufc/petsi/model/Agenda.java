@@ -14,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table( name = "agenda" )
 public class Agenda {
+	
 	@Id
 	@GeneratedValue
 	private Long id;

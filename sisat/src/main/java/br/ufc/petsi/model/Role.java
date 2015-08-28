@@ -21,9 +21,7 @@ public class Role implements GrantedAuthority, Serializable {
 	@NotNull
 	private String role;
 	
-	public Role() {
-		
-	}
+	public Role() {}
 	
 	public Role(Long id, String role) {
 		this.id = id;

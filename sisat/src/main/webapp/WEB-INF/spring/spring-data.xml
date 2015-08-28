@@ -16,7 +16,7 @@
 		<property name="username" value="postgres"/>
 		<property name="password" value="postgres"/>
 		<property name="driverClassName" value="org.postgresql.Driver"/>
-		<property name="url" value="jdbc:postgresql://localhost:5432/teste"/>
+		<property name="url" value="jdbc:postgresql://localhost:5432/teste-sisat"/>
 	</bean>
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -30,7 +30,13 @@
 		
 		<property name="annotatedClasses">
 			<array>
-				<value>br.ufc.petsi</value>
+				<value>br.ufc.petsi.model.Consultation</value>
+				<value>br.ufc.petsi.model.Agenda</value>
+				<value>br.ufc.petsi.model.Role</value>
+				<value>br.ufc.petsi.model.Rating</value>
+				<value>br.ufc.petsi.model.Schedule</value>
+				<value>br.ufc.petsi.model.Service</value>
+				<value>br.ufc.petsi.model.User</value>
 			</array>
 		</property>
 		
