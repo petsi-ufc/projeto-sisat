@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table( name = "agenda" )
@@ -22,8 +23,6 @@ public class Agenda {
 			cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Schedule> schedules;
 	
-	@OneToOne(targetEntity = User.class, 
-			  cascade = { CascadeType.MERGE }, 
-			  fetch = FetchType.EAGER)
-	private User user;
+	@NotNull
+	private Long id_user;
 }

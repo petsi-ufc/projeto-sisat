@@ -46,7 +46,18 @@
 		<!-- Spring Security -->
 		<spring.security.version>3.2.1.RELEASE</spring.security.version>
 
+		<!-- NPI -->	
+		<npi.core.version>0.1.0</npi.core.version>		
+		<npi.ldap.version>0.1</npi.ldap.version>
+		
 	</properties>
+	
+	<repositories>
+		<repository>
+			<id>npi-mvn-repo</id>
+			<url>http://npi-ufc-qxd.github.io/npi-mvn-repo/</url>
+		</repository>
+	</repositories>	
 	
 	<dependencies>
 
@@ -126,6 +137,24 @@
 			<version>2.0.1.RELEASE</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>br.ufc.quixada.npi</groupId>
+			<artifactId>npi-core-api</artifactId>
+			<version>${npi.core.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>mail</artifactId>
+					<groupId>javax.mail</groupId>
+				</exclusion>
+			</exclusions>			
+		</dependency>	
+		
+		<dependency>
+			<groupId>br.ufc.quixada.npi</groupId>
+			<artifactId>npi-ldap</artifactId>
+			<version>${npi.ldap.version}</version>
+		</dependency>	
+		
 		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -197,11 +226,24 @@
 		</dependency>
 		
 		
+		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.12</version>
-		</dependency>
+        	<groupId>org.slf4j</groupId>
+        	<artifactId>slf4j-api</artifactId>
+        	<version>1.7.5</version>
+    	</dependency>
+    	
+	    <!-- slf4j-bridge for commons-logging -->
+	    <dependency>
+	        <groupId>org.slf4j</groupId>
+	        <artifactId>jcl-over-slf4j</artifactId>
+	        <version>1.7.5</version>
+	    </dependency>
+	    <dependency>  
+	        <groupId>org.slf4j</groupId>  
+	        <artifactId>slf4j-log4j12</artifactId>  
+	        <version>1.7.5</version>  
+	    </dependency>
 		
 	</dependencies>
 

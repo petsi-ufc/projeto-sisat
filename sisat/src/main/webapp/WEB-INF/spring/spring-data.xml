@@ -52,7 +52,7 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
-	<!-- Configurando o Ldap para uso -->
+	<!-- Configurando o Ldap-->
 	<jee:jndi-lookup id="ldapUrl" jndi-name="java:comp/env/ldap/url" expected-type="java.lang.String" />
     <jee:jndi-lookup id="ldapBase" jndi-name="java:comp/env/ldap/base" expected-type="java.lang.String" />
     <jee:jndi-lookup id="ldapUserDn" jndi-name="java:comp/env/ldap/userdn" expected-type="java.lang.String" />

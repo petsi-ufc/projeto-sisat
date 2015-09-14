@@ -17,7 +17,11 @@ http://www.springframework.org/schema/security/spring-security.xsd">
 		
 	</security:http>
 
+	<bean id="ldapAuthenticationProvider" class="br.ufc.petsi.security.LdapAuthenticationProvider"></bean>
+
 	<security:authentication-manager>
+		<!-- Nosso provedor -->
+		<security:authentication-provider ref="ldapAuthenticationProvider" />
 		<!-- Provedor baseado em memória -->
 		<security:authentication-provider>
 			<security:user-service>

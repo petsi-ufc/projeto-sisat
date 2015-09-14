@@ -11,27 +11,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table( name = "users" )
 public class User {
 	
-	@Id
-	@GeneratedValue
 	private Long id;
 	
-	@NotNull
 	private String login;
 	
-	@NotNull
-	private String password;
-	
-	@NotNull
 	private String email;
 	
-	@ManyToMany
-	@JoinTable( name = "user_role", 
-				joinColumns = @JoinColumn( name = "user_id" ), 
-				inverseJoinColumns = @JoinColumn( name = "role_id" ) )
 	private List<Role> roles;
 
 	public User() {
@@ -41,7 +28,6 @@ public class User {
 	public User(Long id, String login, String password, String email, List<Role> roles) {
 		this.id = id;
 		this.login = login;
-		this.password = password;
 		this.email = email;
 		this.roles = roles;
 	}
@@ -60,14 +46,6 @@ public class User {
 
 	public void setLogin(String login) {
 		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getEmail() {
